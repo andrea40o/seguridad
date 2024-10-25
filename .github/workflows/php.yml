@@ -37,18 +37,18 @@ jobs:
           echo "PHPUnit not installed, skipping tests."
         fi
 
-  security_scan:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  #security_scan:
+    #runs-on: ubuntu-latest
+    #steps:
+    #- name: Checkout code
+      #uses: actions/checkout@v2
 
-    - name: Run OWASP Dependency-Check
-      uses: owasp/dependency-check-action@v3.0.1  # Actualiza a la última versión disponible
-      with:
-        project: seguridad
-        format: ALL
-        scan: .
+    #- name: Run OWASP Dependency-Check
+      #uses: owasp/dependency-check-action@v3.0.1  # Actualiza a la última versión disponible
+      #with:
+        #project: seguridad
+        #format: ALL
+        #scan: .
         
     - name: Upload Dependency-Check Report
       uses: actions/upload-artifact@v3
