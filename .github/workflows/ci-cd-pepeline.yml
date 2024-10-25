@@ -13,20 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del código 
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      # 2. Configuración del entorno PHP
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'  # Cambiar a la versión de PHP que necesites
-          extensions: mbstring, xml, curl  # Agrega las extensiones que necesites
-
-      # 3. Instalación de dependencias
-      - name: Install dependencies
-        run: composer install
+   
 
       # 4. Pruebas automatizadas ------------------------------------------
       - name: Run tests
@@ -47,10 +34,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      # 7. Checkout del código nuevamente para el despliegue
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+    
       # 8. Despliegue en entorno de pruebas ------------------------------
       - name: Deploy to Test Environment
         run: |
