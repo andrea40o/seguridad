@@ -46,7 +46,7 @@ jobs:
     - name: Run OWASP Dependency-Check
       uses: dependency-check/action@v3.3.0
       with:
-        project: Seguridad
+        project: seguridad
         format: ALL
         scan: .
         
