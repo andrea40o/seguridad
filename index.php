@@ -14,6 +14,7 @@
 ?>
     <div class="container-fluid">
         <h1 class="text-center">Artículos</h1>
+        <h1 class="text-center">Artículos</h1>
         <div class="row">
             <?php foreach ($articulos as $art):?>
             <div class="col-sm-4">
