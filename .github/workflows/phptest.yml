@@ -1,0 +1,66 @@
+name: PHP CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Install dependencies
+      run: composer install --no-progress --no-suggest --prefer-dist
+
+    - name: Run tests
+      run: vendor/bin/phpunit
+
+  security_scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run OWASP Dependency-Check
+      uses: actions/owasp-dependency-check@v2
+      with:
+        project: Seguridad
+        format: ALL
+        scan: .
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build application
+      run: |
+        # Aquí puedes agregar los comandos necesarios para construir tu aplicación
+        echo "Construcción de la aplicación completada"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to test environment
+      run: |
+        # Aquí puedes agregar los comandos necesarios para desplegar tu aplicación en el entorno de pruebas
+        echo "Despliegue en el entorno de pruebas completado"
+
+    # - name: Run test suite
+    #   run: composer run-script test
