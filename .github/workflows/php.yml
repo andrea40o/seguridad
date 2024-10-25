@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
@@ -37,18 +37,18 @@ jobs:
           echo "PHPUnit not installed, skipping tests."
         fi
 
-  #security_scan:
-    #runs-on: ubuntu-latest
-    #steps:
-    #- name: Checkout code
-      #uses: actions/checkout@v2
+  security_scan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    #- name: Run OWASP Dependency-Check
-      #uses: owasp/dependency-check-action@v3
-      #with:
-        #project: seguridad
-        #format: ALL
-        #scan: .
+    - name: Run OWASP Dependency-Check
+      uses: owasp/dependency-check-action@v3
+      with:
+        project: seguridad
+        format: ALL
+        scan: .
         
     - name: Upload Dependency-Check Report
       uses: actions/upload-artifact@v3
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Build application
       run: |
@@ -72,7 +72,7 @@ jobs:
     needs: build
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Deploy to test environment
       run: |
