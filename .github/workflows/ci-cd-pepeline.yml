@@ -27,13 +27,6 @@ jobs:
       # Para PHP, este paso puede no ser necesario, pero puedes agregarlo según tus necesidades.
       - name: Build application
         run: echo "No build step required for PHP."
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-
-    steps:
     
       # 8. Despliegue en entorno de pruebas ------------------------------
       - name: Deploy to Test Environment
