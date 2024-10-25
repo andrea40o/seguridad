@@ -46,7 +46,7 @@ jobs:
     - name: Run OWASP Dependency-Check
       uses: owasp/dependency-check-action@v2.0.1  # Actualiza a la última versión disponible
       with:
-        project: Seguridad
+        project: seguridad
         format: ALL
         scan: .
         
